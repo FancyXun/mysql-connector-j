@@ -97,7 +97,7 @@ com.mysql.cj.extra.libs=&lt;full_path_to_connector-j-jardeps&gt;
 # - Must point to JDK home directory.
 # - Also used for testing if 'com.mysql.cj.testsuite.jvm' is not provided.
 # - Mandatory.
-com.mysql.cj.build.jdk=&lt;full_path_to_jdk1.8&gt;
+com.mysql.cj.build.jdk=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home
 
 # Single JVM/MySQL tests:
 # - Must point to JDK or JRE home directory.
@@ -256,7 +256,7 @@ See also com.mysql.cj.conf.PropertyDefinitions.SYSP_* variables for other test o
     </condition>
 
     <!-- The JDK used to compile the code. -->
-    <property name="com.mysql.cj.build.jdk" value="/usr/lib/jvm/jdk1.8" />
+    <property name="com.mysql.cj.build.jdk" value="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home" />
 
     <!-- Generate debugging info in compiled code. -->
     <property name="com.mysql.cj.build.addDebugInfo" value="yes" />
