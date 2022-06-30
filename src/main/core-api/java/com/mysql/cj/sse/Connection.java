@@ -4,8 +4,14 @@ import java.sql.SQLException;
 
 public class Connection {
 
+    public URI uri;
+
+    public Connection( URI uri){
+        this.uri = uri;
+    }
+
     public Statement createStatement(){
-        return null;
+        return new Statement(this.uri);
     }
     public void close() throws SQLException {
 
