@@ -28,9 +28,9 @@ public class SSETest {
             rt = st.executeQuery(sql);
             //处理查询语句
             while(rt.next()){
-                String ename = rt.getString("ename");
-                String sal = rt.getString("sal");
-                System.out.println(ename + "," + sal);
+                String age = rt.getString("age");
+                String score = rt.getString("score");
+                System.out.println(age + "," + score);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

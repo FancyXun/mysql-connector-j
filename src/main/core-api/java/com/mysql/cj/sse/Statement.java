@@ -1,6 +1,7 @@
 package com.mysql.cj.sse;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import org.junit.platform.commons.util.StringUtils;
 
 import java.io.*;
@@ -20,9 +21,18 @@ public class Statement {
     }
     public ResultSet executeQuery(String sql) throws SQLException {
         Map<String, String> headMap = new HashMap<>();
-        this.sendPost1(this.uri.url, "query="+sql + "&" + "db=" +
+
+        Map maps = this.sendPost1(this.uri.url, "query="+sql + "&" + "db=" +
                 this.uri.db + "&" + "user=" + this.uri.username + "&" + "password=" + this.uri.password);
-        return null;
+        JSONArray jsonArray = (JSONArray) maps.get("result");
+        JSONArray jsonArray1 = (JSONArray) maps.get("columns");
+
+        ResultSet resultSet = new ResultSet();
+        resultSet.setCurrent(jsonArray.size());
+        resultSet.setValues(jsonArray);
+        resultSet.setColumns(jsonArray1.getJSONArray(0));
+
+        return resultSet;
     }
 
     public void close() throws SQLException {
@@ -123,7 +133,6 @@ public class Statement {
                 result += line;
                 maps = (Map)JSON.parse(line);
             }
-            System.out.println("111");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Http请求方法内部问题");
