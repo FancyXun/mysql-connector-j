@@ -20,11 +20,11 @@ public class SSETest {
             //com.mysql.cj.jdbc.Driver Driver = new com.mysql.cj.jdbc.Driver();
             DriverManager.registerDriver(new com.mysql.cj.sse.Driver());
             //获取数据库连接
-            conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/liu2?serverTimezone=GMT%2B8","用户名","密码");
+            conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:8888/points?serverTimezone=GMT%2B8","root","root");
             //获取数据库操作对象
             st = conn.createStatement();
             //执行sql语句
-            String sql = "select name,sal from emp order by sal desc";
+            String sql = "select * from table_0edaf31daa6130e2d9ffa5d9d1d8706d limit 10";
             rt = st.executeQuery(sql);
             //处理查询语句
             while(rt.next()){
